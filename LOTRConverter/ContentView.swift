@@ -9,8 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showInfo : Bool = false
+    @State var showSelectedCurrency : Bool = false
     @State var rightAmount = ""
     @State var leftAmount = ""
+    @State var leftCurrency = Currency.silverPiece
+    @State var rightCurrency = Currency.goldPiece
     var body: some View {
         ZStack(){
             Image(.background)
@@ -27,12 +30,14 @@ struct ContentView: View {
                 HStack(){
                     VStack(){
                         HStack(){
-                            Image("silverpiece")
+                            Image(leftCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 25)
-                            Text("Silver Piece")
+                            Text(leftCurrency.name)
                                 .foregroundColor(Color.white)
+                        }.onTapGesture {
+                            showSelectedCurrency.toggle()
                         }
                         // Textfield here
                         TextField("Amount",
@@ -47,12 +52,14 @@ struct ContentView: View {
                         //.symbolEffect(.pulse)
                     VStack(){
                         HStack(){
-                            Image("goldpiece")
+                            Image(rightCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 25)
-                            Text("Gold Piece")
+                            Text(rightCurrency.name)
                                 .foregroundColor(Color.white)
+                        }.onTapGesture {
+                            showSelectedCurrency.toggle()
                         }
                         
                         // TextField here
@@ -84,6 +91,9 @@ struct ContentView: View {
             ExchangeInfoView()
         }
         )
+        .sheet(isPresented: $showSelectedCurrency, content:{
+            SelectCurrency(topCurrency: leftCurrency, bottomCurrency: rightCurrency)
+        })
     }
 }
 

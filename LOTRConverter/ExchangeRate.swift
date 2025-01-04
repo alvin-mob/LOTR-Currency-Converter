@@ -2,7 +2,7 @@
 //  ExchangeRate.swift
 //  LOTRConverter
 //
-//  Created by Abraham Cyriac on 19/07/24.
+//  Created by alvin-mob on 19/07/24.
 //
 
 import SwiftUI

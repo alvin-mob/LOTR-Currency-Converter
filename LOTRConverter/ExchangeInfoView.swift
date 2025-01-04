@@ -2,7 +2,7 @@
 //  ExchangeInfoView.swift
 //  LOTRConverter
 //
-//  Created by Abraham Cyriac on 18/07/24.
+//  Created by alvin-mob on 18/07/24.
 //
 
 import SwiftUI
